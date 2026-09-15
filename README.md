@@ -12,4 +12,4 @@ This repository contains the development work, source code, documentation, and r
 - Sana Mehmood — Team Leader / Software Developer
 - Esha Shahzad — AI/ML Developer
 - Manahil Naeem — UI/UX Designer / Developer
-
+- Laiba Jamil SAP ID: 55132, BS SE -7
