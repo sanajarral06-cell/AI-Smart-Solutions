@@ -1,0 +1,50 @@
+
+name: Docker CI-CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+jobs:
+  build-test-push:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          docker build -t esha-app:latest -f DP/Dockerfile DP/
+
+      - name: Test Docker Container
+        run: |
+          docker run --rm esha-app:latest
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.eshashahzad12 }}
+          password: ${{ secrets.dckr_pat_A3Rxj47m_lJF_IiBx2IcrYeJYzs }}
+
+      - name: Push Docker Image
+        run: |
+          docker tag esha-app:latest ${{ secrets.eshashahzad12 }}/esha-app:latest
+          docker push ${{ secrets.eshashahzad12 }}/esha-app:latest
+
+  deploy:
+    needs: build-test-push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to AWS EC2
+        run: echo "AWS deployment configuration will be added"
