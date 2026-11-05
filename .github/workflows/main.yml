@@ -33,13 +33,13 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.eshashahzad12 }}
-          password: ${{ secrets.dckr_pat_A3Rxj47m_lJF_IiBx2IcrYeJYzs }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push Docker Image
         run: |
-          docker tag esha-app:latest ${{ secrets.eshashahzad12 }}/esha-app:latest
-          docker push ${{ secrets.eshashahzad12 }}/esha-app:latest
+          docker tag esha-app:latest ${{ secrets.DOCKERHUB_USERNAME }}/esha-app:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/esha-app:latest
 
   deploy:
     needs: build-test-push
