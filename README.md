@@ -24,4 +24,4 @@ This project uses GitHub Actions to automate the CI/CD process.
 
 ## Technologies Used
 
-GitHub, GitHub Actions, Docker, Docker Hub, and AWS EC2.
+GitHub, GitHub Actions, Docker, Docker Hub, and AWS EC2. 
