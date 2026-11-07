@@ -62,4 +62,4 @@ Image: `40283/mid-app:54035`
 - Updated README documentation.
 - Added GitHub Actions workflow.
 - Automated Docker image build and push.
-- Added deployment automation.
+- Added deployment automation
